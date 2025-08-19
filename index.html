@@ -6,7 +6,8 @@
     <title>NATLABBS</title>
     <style>
         *{
-            margin: 0; padding: 0;
+            margin: 0; 
+            padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', sans-serif;
         }
@@ -21,16 +22,20 @@
         body::before{
             content: "";
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0; 
+            left: 0;
+            width: 100%; 
+            height: 100%;
             background: url('industry.jpg') no-repeat center center/cover;
             z-index: -2;
         }
         body::after{
             content: "";
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0; 
+            left: 0;
+            width: 100%; 
+            height: 100%;
             background: rgba(0,0,0,0.55); 
             z-index: -1;
         }
@@ -215,10 +220,30 @@
             let file=document.getElementById("file").value;
             if(!email || !password || !dob || !course || !lang || !file){
                 alert("Please fill all the fields!");
-            } 
-            else{
-                showPage("success");
+                return;
             }
+            let hasUpper=/[A-Z]/.test(password);
+            let hasLower=/[a-z]/.test(password);
+            let hasNumber=/[0-9]/.test(password);
+            let hasSpecial=/[@$!%*?&]/.test(password);
+            if(password.length<8||!hasUpper||!hasLower||!hasNumber||!hasSpecial){
+                alert("Password must be at least 8 characters, include upper, lower, number and special symbol.");
+                return;
+            }
+            let dobDate=new Date(dob);
+            let today=new Date();
+            let age=today.getFullYear()-dobDate.getFullYear();
+            let m=today.getMonth()-dobDate.getMonth();
+            if(m<0||(m===0 && today.getDate()<dobDate.getDate())){
+                alert("Invalid date");
+                return;
+            }
+            if(age<18){
+                alert("You must be at least 18 years old.");
+                return;
+            }
+            showPage("success");
         }
     </script>
-</body>html>
+</body>
+</html>
