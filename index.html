@@ -235,8 +235,7 @@
             let age=today.getFullYear()-dobDate.getFullYear();
             let m=today.getMonth()-dobDate.getMonth();
             if(m<0||(m===0 && today.getDate()<dobDate.getDate())){
-                alert("Invalid date");
-                return;
+                age--;
             }
             if(age<18){
                 alert("You must be at least 18 years old.");
@@ -247,3 +246,4 @@
     </script>
 </body>
 </html>
+
