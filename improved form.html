@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>NATLABBS</title>
+    <style>
+        *{
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        body::before{
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('industry.jpg') no-repeat center center/cover;
+            z-index: -2;
+        }
+        body::after{
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.55); 
+            z-index: -1;
+        }
+        header{
+            background: linear-gradient(to right, #d23eef, #8a2be2);
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .page{
+            flex: 1;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .page-active{
+            display: flex;
+        }
+        .page p{
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        a,input[type="submit"]{
+            background-color: #e63946;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        a:hover,input[type="submit"]:hover{
+            background-color: #d62828;
+        }
+        .container{
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            padding: 40px 50px;
+            width: 650px;
+            color: black;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 30px;
+            color: black;
+        }
+        table{
+            width: 100%;
+            border-spacing: 10px 15px;
+        }
+        input[type="text"],input[type="password"],input[type="date"],select,input[type="file"]{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator,input[type="file"]::-webkit-file-upload-button,input[type="radio"],select{
+            cursor: pointer;
+        }
+        .radio-options{
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+        .radio-options label{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .centered{
+            text-align: center;
+            padding-top: 10px;
+        }
+        #home{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        #home p{
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: white;
+            max-width: 900px;
+        }
+        #home a{
+            display: inline-block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>NATLABBS</header>
+    <div id="home" class="page-active">
+        <div class="home-content">
+            <p>Welcome to Natlabbs. Dive into our tailored programs designed to address industry-specific talent challenges head-on, empowering you to pioneer innovation and drive success. From mastering solutions to navigate the complexities of talent development across various industry verticals such as IT, Life Sciences, Finance, among others, embrace practical experiences crafted to keep you ahead of the curve and adaptable to industry shifts. Join us in fueling transformative change across the globe. With our industry-focused training, you'll uncover boundless opportunities and shape the future of Industry.</p>
+            <br>
+            <p>Join us by registering below.</p>
+            <a href="#" onclick="showPage('register')">Register</a>
+        </div>
+    </div>
+    <div id="register" class="page">
+        <div class="container">
+            <h1>Register Now</h1>
+            <form id="regForm">
+                <table>
+                    <tr>
+                        <td><label for="email">Email ID:</label></td>
+                        <td><input type="text" id="email" placeholder="Enter valid email"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password:</label></td>
+                        <td><input type="password" id="password" placeholder="Enter password"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="dob">Date of Birth:</label></td>
+                        <td><input type="date" id="dob"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="course">Choose Course:</label></td>
+                        <td>
+                            <select id="course">
+                                <option value="">Choose</option>
+                                <option value="HTML">HTML</option>
+                                <option value="Python">Python</option>
+                                <option value="Java">Java</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Language:</td>
+                        <td class="radio-options">
+                            <label><input type="radio" name="lang" value="English"> English</label>
+                            <label><input type="radio" name="lang" value="Hindi"> Hindi</label>
+                            <label><input type="radio" name="lang" value="Bengali"> Bengali</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="file">Upload File:</label></td>
+                        <td><input type="file" id="file"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="centered"><input type="submit" value="Submit"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div id="success" class="page">
+        <h1 style="background:rgba(0,0,0,0.6); padding:20px; border-radius:12px; color:#90ee90;">
+            Registration Successful! Thank you for joining.
+        </h1>
+        <a href="#" onclick="showPage('home')">Back to Home</a>
+    </div>
+    <script>
+        function showPage(pageId){
+            document.getElementById("home").style.display="none";
+            document.getElementById("register").style.display="none";
+            document.getElementById("success").style.display="none";
+            document.getElementById(pageId).style.display="flex";
+        }
+        document.getElementById("regForm").onsubmit=function(e){
+            e.preventDefault();
+            let email=document.getElementById("email").value;
+            let password=document.getElementById("password").value;
+            let dob=document.getElementById("dob").value;
+            let course=document.getElementById("course").value;
+            let lang=document.querySelector("input[name='lang']:checked");
+            let file=document.getElementById("file").value;
+            if(!email || !password || !dob || !course || !lang || !file){
+                alert("Please fill all the fields!");
+            } 
+            else{
+                showPage("success");
+            }
+        }
+    </script>
+</body>html>
